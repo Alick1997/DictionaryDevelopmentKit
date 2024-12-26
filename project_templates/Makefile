@@ -9,12 +9,12 @@
 # You need to edit these values.
 
 ifndef DICT_NAME
-  $(error Dictionary name is not set.)
+  $(error DICT_NAME is not set.)
 endif
 
-DICT_SRC_PATH		=	$(DICT_NAME).xml
-CSS_PATH		=	MyDictionary.css
-PLIST_PATH		=	MyInfo.plist
+DICT_SRC_PATH		?=	$(DICT_NAME).xml
+CSS_PATH		?=	MyDictionary.css
+PLIST_PATH		?=	MyInfo.plist
 
 DICT_BUILD_OPTS		=
 # Suppress adding supplementary key.
