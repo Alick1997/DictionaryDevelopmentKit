@@ -8,8 +8,11 @@
 
 # You need to edit these values.
 
-DICT_NAME		=	"My Dictionary"
-DICT_SRC_PATH		=	MyDictionary.xml
+ifndef DICT_NAME
+  $(error Dictionary name is not set.)
+endif
+
+DICT_SRC_PATH		=	$(DICT_NAME).xml
 CSS_PATH		=	MyDictionary.css
 PLIST_PATH		=	MyInfo.plist
 
@@ -21,8 +24,11 @@ DICT_BUILD_OPTS		=
 
 # The DICT_BUILD_TOOL_DIR value is used also in "build_dict.sh" script.
 # You need to set it when you invoke the script directly.
-
-DICT_BUILD_TOOL_DIR	=	"/DevTools/Utilities/Dictionary Development Kit"
+ifndef DEV
+	DICT_BUILD_TOOL_DIR	=	$(HOME)/Library/DDK
+else
+	DICT_BUILD_TOOL_DIR	= $(shell cd "$(dir $(realpath $(lastword $(MAKEFILE_LIST))))/.."; pwd)
+endif
 DICT_BUILD_TOOL_BIN	=	"$(DICT_BUILD_TOOL_DIR)/bin"
 
 ###########################
